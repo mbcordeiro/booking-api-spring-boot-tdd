@@ -12,4 +12,5 @@ public class Booking {
     private String reserveName;
     private LocalDate checkIn;
     private LocalDate checkOut;
+    private int numberGuests;
 }

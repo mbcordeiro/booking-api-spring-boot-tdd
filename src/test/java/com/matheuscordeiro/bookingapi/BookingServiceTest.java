@@ -32,7 +32,13 @@ public class BookingServiceTest {
     public void setUp() {
         var checkIn = LocalDate.parse("2021-11-07");
         var checkOut = LocalDate.parse("2021-11-17");
-        var booking = Booking.builder().id(1L).reserveName("Matheus").checkIn(checkIn).checkOut(checkOut).build();
+        var booking = Booking.builder()
+                .id(1L)
+                .reserveName("Matheus")
+                .checkIn(checkIn)
+                .checkOut(checkOut)
+                .numberGuests(2)
+                .build();
         when(bookingRepository.findByReserveName(booking.getReserveName())).thenReturn(Optional.of(booking));
     }
 
@@ -43,7 +49,7 @@ public class BookingServiceTest {
     BookingRepository bookingRepository;
 
     @Test
-    public void bookingServiceDaysCalculator() {
+    public void shouldReturnDaysCalculator() {
         var name = "Matheus";
         var days = bookingService.dayCalculator(name);
         assertEquals(days, 10);
